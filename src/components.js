@@ -30,23 +30,26 @@ Crafty.c('Actor', {
 // A Tree is just an Actor with a certain sprite
 Crafty.c('Tree', {
   init: function() {
-    this.requires('Actor, Solid, spr_tree');
+    this.requires('Actor, Solid, Color')
+      .color('rgb(20, 125, 40)');
   },
 });
  
 // A Bush is just an Actor with a certain sprite
 Crafty.c('Bush', {
   init: function() {
-    this.requires('Actor, Solid, spr_bush');
+    this.requires('Actor, Solid, Color')
+      .color('rgb(20, 185, 40)');
   },
 });
  
 // This is the player-controlled character
 Crafty.c('PlayerCharacter', {
   init: function() {
-    this.requires('Actor, Fourway, Collision, spr_player')
+    this.requires('Actor, Fourway, Collision, Color')
       .fourway(4)
       .stopOnSolids()
+      .color('rgb(20, 75, 40)')
       .onHit('Village', this.visitVillage);
   },
  
@@ -77,7 +80,7 @@ Crafty.c('PlayerCharacter', {
 // A village is a tile on the grid that the PC must visit in order to win the game
 Crafty.c('Village', {
   init: function() {
-    this.requires('Actor, spr_village');
+    this.requires('Actor, Color');
   },
  
   // Process a visitation with this village
